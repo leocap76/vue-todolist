@@ -16,11 +16,22 @@ var app = new Vue({
     el: '#root',
     data: {
         list: [
-            "crea la cartella",
-            "nomina la cartella",
-            "inserisci sottocartelle js e css",
-            "controlla le slide"
-            "inizia a sclerare"
+            'crea la cartella',
+             'nomina la cartella',
+             'inserisci sottocartelle js e css',
+             'controlla le slide',
+             'inizia a sclerare',
         ],
+        newItem:'',
+
       },
-});
+      methods: {
+      addList: function() {
+        this.list.push({name: this.newItem});
+        this.newItem = '';
+      },
+      removeList: function(index) {
+       this.list.splice(index,1);
+      },
+  }
+);

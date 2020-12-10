@@ -9,17 +9,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
-
-    <div id="root">
-        <div id="wrapper">
-          <div class="search">
-              <input class="search-input" type="text" name="" placeholder="Aggiungi">
-              <button class="search-button" href="#">
-                  <i class="material-icons">Aggiungi</i>
-              </button>
-          </div>
-        </div>
-    </div>
+       <div id="root">
+           <h1>to do</h1>
+           <div class="search">
+               <input @keypress.13="addList" type="text" v-model="newItem">
+               <button @click="addList">New Item</button>
+               <button @click="removeList(index)">Remove</button>
+           </div>
+           <ul>
+             <li v-for="(item,index) in list">{{index}} : {{ item }} </li>
+           </ul>
+       </div>
 
   <script src="js/script.js" charset="utf-8"></script>
   </body>
