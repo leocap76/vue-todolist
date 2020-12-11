@@ -14,11 +14,13 @@
            <div class="search">
                <input @keypress.13="addList" type="text" v-model="newItem">
                <button @click="addList">New Item</button>
-               <button @click="removeList(index)">Remove</button>
            </div>
-           <ul>
-             <li v-for="(item,index) in list">{{index}} : {{ item }} </li>
+           <!-- se la lista di cose da fare (list) è maggiore di 0, allora mostrerà le cose da fare -->
+           <ul v-if="list.length > 0">
+             <li v-for="(item,index) in list"> {{index + 1}} : {{ item }} <span class="delete" > <button type="button" name="button" @click="removeList(index)"> <i class="fas fa-trash-alt"></i> </button> </span> </li>
            </ul>
+           <!-- se uguale a 0, vuol dire che non c'è nulla da fare -->
+           <h1 v-else="non ci sono cose da fare!!"></h1>
        </div>
 
   <script src="js/script.js" charset="utf-8"></script>
