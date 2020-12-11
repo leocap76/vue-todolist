@@ -23,6 +23,8 @@ var app = new Vue({
              'inizia a sclerare',
       ],
       newItem:'',
+      hoverToDo: null,
+      zoomClass: 'zoom'
 
     },
     methods: {
@@ -33,5 +35,8 @@ var app = new Vue({
       removeList: function(index) {
        this.list.splice(index,1);
       },
+      updateHover: function(indexHover){
+        this.hoverToDo = indexHover;
+      }
   }
 });

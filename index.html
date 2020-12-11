@@ -12,12 +12,19 @@
        <div id="root">
            <h1>to do</h1>
            <div class="search">
-               <input  type="text" v-model="newItem">
-               <button @click="addList">New Item</button>
+             <!-- @keyup.13/enter -->
+               <input  type="text" v-model="newItem" @keyup.13="addList">
+               <button @click="addList" >New Item</button>
            </div>
            <!-- se la lista di cose da fare (list) è maggiore di 0, allora mostrerà le cose da fare -->
            <ul v-if="list.length > 0">
-             <li v-for="(item,index) in list"> {{index + 1}} : {{ item }} <span class="delete" > <button type="button" name="button" @click="removeList(index)"> <i class="fas fa-trash-alt"></i> </button> </span> </li>
+             <li v-for="(item,index) in list" :class="{zoomClass: (hoverToDo === index)}">
+               <span class="delete" @mouseenter="updateHover(index)" @mouseleave="updateHover(-1)">
+                 <button type="button" name="button" @click="removeList(index)">
+                   <i class="fas fa-trash-alt"></i>
+                 </button>
+               </span>  {{index + 1}}  {{ item }}
+             </li>
            </ul>
            <!-- se uguale a 0, vuol dire che non c'è nulla da fare -->
            <h1 v-else>non ci sono cose da fare!!</h1>
